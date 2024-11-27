@@ -16,7 +16,11 @@ connectCloudinary()
 
 // middlewares
 app.use(express.json())
-app.use(cors())
+const options = {
+  origin:[process.env.CORS_CLIENT_URL,process.env.CORS_ADMIN_URL],
+  credentials:true
+}
+app.use(cors(options))
 
 // api endpoints
 app.use("/api/user", userRouter)
