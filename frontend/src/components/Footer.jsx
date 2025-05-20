@@ -11,21 +11,22 @@ import {
 const socialLinks = [
   {
     path: "https://www.youtube.com",
-    icon: <AiFillYoutube className="group-hover: w-4 h-5" />,
+    icon: <AiFillYoutube className="w-5 h-5" />,
   },
   {
     path: "https://github.com",
-    icon: <AiFillGithub className="group-hover:w-4 h-5" />,
+    icon: <AiFillGithub className="w-5 h-5" />,
   },
   {
     path: "https://www.instagram.com",
-    icon: <AiOutlineInstagram className="group-hover: w-4 h-5" />,
+    icon: <AiOutlineInstagram className="w-5 h-5" />,
   },
   {
     path: "https://www.linkedin.com",
-    icon: <RiLinkedinFill className="group-hover:w-4 h-5" />,
+    icon: <RiLinkedinFill className="w-5 h-5" />,
   },
 ];
+
 const quickLinks01 = [
   {
     path: "/home",
@@ -44,6 +45,7 @@ const quickLinks01 = [
     display: "Blog",
   },
 ];
+
 const quickLinks02 = [
   {
     path: "/find-a-doctor",
@@ -62,6 +64,7 @@ const quickLinks02 = [
     display: "Get a Opinion",
   },
 ];
+
 const quickLinks03 = [
   {
     path: "/",
@@ -76,79 +79,99 @@ const quickLinks03 = [
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <footer className=" pb-16 pt-10 border-u border-b-gray-400">
-      <div className="container">
-        <div className="flex justify-between flex-col md:flex-row flex-wrap gap-[30px]">
-          <div>
-            <img src={logo} alt="" />
-            <p className="text-[16px] leading-7 font-[400] text-textColor mt-4">
-              Copyright {year} developed by Himanshu Singh all right reserved.
-           
-            </p>
+    <footer className="relative bg-gradient-to-br from-blue-50 to-blue-100 mt-20 w-full">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+      </div>
 
-            <div className="flex items-center gap-3 mt-4">
-              {socialLinks.map((link, index) => (
-                <Link
-                  to={link.path}
-                  key={index}
-                  className="w-9 h-9 border border-solid border-[#181A1E] rounded-full flex items-center
-justify-center group hover:bg-sky-400 hover:border-none" >
-                  {link.icon}
-                </Link>
-              ))}
+      <div className="relative w-full">
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="py-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* Company Info */}
+              <div className="space-y-3">
+                <img src={logo} alt="Logo" className="h-12" />
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Copyright {year} developed by Himanshu Singh all right reserved.
+                </p>
+                <div className="flex items-center gap-3">
+                  {socialLinks.map((link, index) => (
+                    <Link
+                      to={link.path}
+                      key={index}
+                      className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 
+                      flex items-center justify-center text-gray-600 hover:bg-blue-500 hover:text-white 
+                      hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-md"
+                    >
+                      {link.icon}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Quick Links */}
+              <div>
+                <h2 className="text-lg font-semibold text-gray-800 mb-4">Quick Links</h2>
+                <ul className="space-y-2">
+                  {quickLinks01.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        to={item.path}
+                        className="text-gray-600 hover:text-blue-500 transition-colors duration-300 flex items-center gap-2 group"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500/50 group-hover:bg-blue-500 transition-colors duration-300"></span>
+                        {item.display}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* I want to */}
+              <div>
+                <h2 className="text-lg font-semibold text-gray-800 mb-4">I want to:</h2>
+                <ul className="space-y-2">
+                  {quickLinks02.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        to={item.path}
+                        className="text-gray-600 hover:text-blue-500 transition-colors duration-300 flex items-center gap-2 group"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500/50 group-hover:bg-blue-500 transition-colors duration-300"></span>
+                        {item.display}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Support */}
+              <div>
+                <h2 className="text-lg font-semibold text-gray-800 mb-4">Support</h2>
+                <ul className="space-y-2">
+                  {quickLinks03.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        to={item.path}
+                        className="text-gray-600 hover:text-blue-500 transition-colors duration-300 flex items-center gap-2 group"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500/50 group-hover:bg-blue-500 transition-colors duration-300"></span>
+                        {item.display}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
 
-          <div>
-            <h2 className="text-[20px] leading-[30px] font-[700] mb-6 text-headingColor">
-              Quick Links
-            </h2>
-            <ul>
-              {quickLinks01.map((item, index) => (
-                <li key={index} className="mb-4">
-                  <Link
-                    to={item.path}
-                    className="text-[16px] leading-7 font-[400] text-textColor"
-                  >
-                    {item.display}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-[20px] leading-[30px] font-[700] mb-6 text-headingColor">
-              I want to:
-            </h2>
-            <ul>
-              {quickLinks02.map((item, index) => (
-                <li key={index} className="mb-4">
-                  <Link
-                    to={item.path}
-                    className="text-[16px] leading-7 font-[400] text-textColor"
-                  >
-                    {item.display}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-[20px] leading-[30px] font-[700] mb-6 text-headingColor">
-              Support
-            </h2>
-            <ul>
-              {quickLinks03.map((item, index) => (
-                <li key={index} className="mb-4">
-                  <Link
-                    to={item.path}
-                    className="text-[16px] leading-7 font-[400] text-textColor"
-                  >
-                    {item.display}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Bottom Border */}
+            <div className="mt-6 pt-4 border-t border-gray-200">
+              <p className="text-center text-gray-500 text-xs">
+                © {year} Medicare. All rights reserved.
+              </p>
+            </div>
           </div>
         </div>
       </div>
