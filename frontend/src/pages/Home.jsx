@@ -16,7 +16,7 @@ const Home = () => {
       <section className="py-[50px] bg-gradient-to-b from-white to-blue-50/30">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent backdrop-blur-sm p-4 rounded-lg bg-white/10 shadow-lg transform hover:scale-[1.02] transition-transform duration-300">
+            <h2 className="text-4xl md:text-4xl lg:text-4xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent backdrop-blur-sm p-4 rounded-lg bg-white/10 shadow-sm transform hover:scale-[1.02] transition-transform duration-300">
               Most questions by our beloved patients
             </h2>
             <p className="text-base md:text-lg text-gray-600 text-center max-w-2xl mx-auto leading-relaxed">

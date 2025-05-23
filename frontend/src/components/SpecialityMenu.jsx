@@ -19,17 +19,17 @@ const SpecialityMenu = () => {
                     <Link 
                         to={`/doctors/${item.speciality}`} 
                         onClick={() => scrollTo(0, 0)} 
-                        className='group flex flex-col items-center p-6 rounded-2xl bg-white/80 backdrop-blur-sm shadow-lg border border-gray-100 hover:bg-white/90 hover:backdrop-blur-md hover:shadow-xl transition-all duration-300 hover:scale-105' 
+                        className='group flex flex-col items-center p-6 rounded-2xl bg-white/40 backdrop-blur-xl shadow-lg border border-white/20 hover:bg-white/60 hover:backdrop-blur-2xl hover:shadow-2xl hover:shadow-blue-200/30 transition-all duration-500 hover:scale-105 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-blue-50/20 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 after:absolute after:inset-0 after:rounded-2xl after:p-[2px] after:bg-gradient-to-r after:from-blue-400/50 after:via-blue-300/50 after:to-blue-400/50 after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-500 after:-z-10' 
                         key={index}
                     >
-                        <div className='relative w-20 h-20 sm:w-24 sm:h-24 mb-4 bg-gradient-to-br from-blue-50 to-white rounded-full p-3 shadow-inner'>
+                        <div className='relative w-20 h-20 sm:w-24 sm:h-24 mb-4 bg-gradient-to-br from-blue-50/90 to-white rounded-full p-3 shadow-inner group-hover:shadow-xl group-hover:shadow-blue-200/30 transition-all duration-500'>
                             <img 
-                                className='w-full h-full object-contain group-hover:scale-110 transition-transform duration-300' 
+                                className='w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 group-hover:drop-shadow-xl' 
                                 src={item.image} 
                                 alt={item.speciality} 
                             />
                         </div>
-                        <p className='text-sm font-semibold text-gray-700 group-hover:text-blue-600 transition-colors duration-300'>
+                        <p className='text-sm font-semibold text-gray-700 group-hover:text-blue-600 transition-colors duration-500 group-hover:drop-shadow-md'>
                             {item.speciality}
                         </p>
                     </Link>

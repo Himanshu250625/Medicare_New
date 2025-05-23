@@ -66,7 +66,7 @@ const Doctors = () => {
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Filter Sidebar */}
-          <aside className="w-full lg:w-1/4">
+          <aside className="w-full lg:w-1/4 lg:sticky lg:top-4 lg:self-start">
             <div className="bg-white/50 backdrop-blur-lg rounded-xl shadow-lg p-6">
               <h3 className="text-xl font-semibold mb-4 text-gray-800">Specialities</h3>
               <ul className="space-y-3">
@@ -95,7 +95,7 @@ const Doctors = () => {
             {filterDoc.length === 0 ? (
               <p className="text-center text-gray-600 text-lg">No doctors found matching your criteria.</p>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[320px] sm:max-w-none mx-auto sm:mx-0">
                 {filterDoc.map((item) => (
                   <div
                     onClick={() => {
@@ -105,8 +105,12 @@ const Doctors = () => {
                     className="relative border border-green-500/20 rounded-xl overflow-hidden cursor-pointer backdrop-blur-lg bg-white/30 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl group hover:border-green-500/50"
                     key={item._id}
                   >
-                    <div className="relative h-60 sm:h-64 md:h-72 overflow-hidden bg-blue-50/50">
-                      <img className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={item.image} alt={item.name} />
+                    <div className="relative h-[400px] sm:h-64 md:h-72 overflow-hidden bg-blue-50/50">
+                      <img 
+                        className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110" 
+                        src={item.image} 
+                        alt={item.name} 
+                      />
                       {item.available ? (
                         <span className="absolute bottom-2 left-2 bg-green-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full">
                           Available

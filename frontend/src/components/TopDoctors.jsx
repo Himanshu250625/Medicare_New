@@ -9,7 +9,7 @@ const TopDoctors = () => {
 
     return (
         <div className='flex flex-col items-center gap-6 my-16 text-[#262626] md:mx-10'>
-            <h1 className='text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 mb-2'>
+            <h1 className='text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 mb-2'>
                 Top Doctors to Book
             </h1>
             <p className='sm:w-1/2 text-center text-lg text-gray-500 font-light mb-2'>
@@ -22,7 +22,7 @@ const TopDoctors = () => {
                         className='bg-white/80 backdrop-blur-md border-2 border-blue-200 rounded-2xl shadow-lg overflow-hidden cursor-pointer min-h-[370px] hover:-translate-y-2 hover:shadow-blue-200/60 hover:shadow-2xl hover:border-blue-400 transition-all duration-300 flex flex-col'
                         key={index}
                     >
-                        <img className='bg-[#EAEFFF] w-full h-56 object-cover rounded-t-2xl' src={item.image} alt="" />
+                        <img className='bg-[#EAEFFF] w-full h-64 object-contain rounded-t-2xl' src={item.image} alt="" />
                         <div className='p-6 flex-1 flex flex-col gap-2'>
                             <div className='flex items-center gap-2'>
                                 <span className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1 ${item.available ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-500'}`}>
