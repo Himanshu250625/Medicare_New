@@ -8,7 +8,7 @@ import heroImg02 from "../assets/hero-img02.png";
 import heroImg03 from "../assets/hero-img03.png";
 import AOS from "aos";
 import "aos/dist/aos.css"; 
-import { FaUser, FaCalendarAlt, FaSignOutAlt } from 'react-icons/fa'
+import { FaUser, FaCalendarAlt, FaSignOutAlt, FaFileMedical } from 'react-icons/fa'
 
 const Navbar = () => {
 
@@ -22,6 +22,19 @@ const Navbar = () => {
     setToken(false)
     navigate('/login')
   }
+
+  const menuItems = [
+    { name: 'Home', path: '/' },
+    { name: 'Doctors', path: '/doctors' },
+    { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' },
+  ];
+
+  const userMenuItems = [
+    { name: 'My Profile', path: '/my-profile' },
+    { name: 'My Appointments', path: '/my-appointments' },
+    { name: 'Health Records', path: '/health-records' },
+  ];
 
   return (
     <>
@@ -77,6 +90,13 @@ const Navbar = () => {
                       >
                         <FaCalendarAlt className="w-4 h-4" />
                         My Appointments
+                      </p>
+                      <p
+                        onClick={() => navigate('/health-records')}
+                        className="hover:text-primary cursor-pointer transition flex items-center gap-2"
+                      >
+                        <FaFileMedical className="w-4 h-4" />
+                        Health Records
                       </p>
                       <p
                         onClick={logout}
