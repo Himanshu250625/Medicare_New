@@ -25,14 +25,14 @@ const Navbar = () => {
   return (
     <>
       <div className="sticky top-0 z-40 w-full bg-white/60 backdrop-blur-md shadow-lg transition-all duration-300">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+        <div className="w-full mx-auto flex items-center justify-between px-6 py-3">
           <img
             onClick={() => navigate("/")}
             className="w-44 cursor-pointer drop-shadow-sm"
             src={logo}
             alt=""
           />
-          <ul className="md:flex items-center gap-8 font-semibold text-base hidden">
+          <ul className="md:flex items-center justify-center gap-12 font-semibold text-base hidden flex-1">
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -91,6 +91,28 @@ const Navbar = () => {
           </ul>
 
           <div className="flex items-center gap-4">
+            <a
+              href="https://medicare-admin123.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-1.5 bg-blue-100/90 backdrop-blur-md border border-blue-200/60 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200/90 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-0.5"
+            >
+              <li className="flex items-center gap-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                ADMIN
+              </li>
+            </a>
             {token && userData ? (
               <div className="flex items-center gap-2 cursor-pointer group relative">
                 <img
@@ -185,6 +207,29 @@ const Navbar = () => {
                 CONTACT
               </li>
             </NavLink>
+            <a
+              href="https://medicare-admin123.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setShowMenu(false)}
+              className="mx-4 my-2"
+            >
+              <li className="px-4 py-2.5 bg-blue-100/90 backdrop-blur-md border border-blue-200/60 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200/90 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 flex items-center justify-center gap-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                ADMIN LOGIN
+              </li>
+            </a>
           </ul>
         </div>
       )}

@@ -25,6 +25,14 @@ import Category from "./pages/Category";
 import Account from "./pages/Account";
 import PaymentOptions from "./pages/PaymentOptions";
 import OrderConfirmation from "./pages/OrderConfirmation";
+import CardPayment from "./pages/payment/CardPayment";
+import UPIPayment from "./pages/payment/UPIPayment";
+import NetBankingPayment from "./pages/payment/NetBankingPayment";
+import CashOnDelivery from "./pages/payment/CashOnDelivery";
+import PaymentGateway from "./pages/payment/PaymentGateway";
+import StripePaymentForm from "./pages/payment/StripePaymentForm";
+import RazorpayPaymentForm from "./pages/payment/RazorpayPaymentForm";
+import PaymentSuccess from "./pages/payment/PaymentSuccess";
 
 const App = () => {
   return (
@@ -53,6 +61,17 @@ const App = () => {
             <Route path="/account" element={<Account />} />
             <Route path="/payment-options" element={<PaymentOptions />} />
             <Route path="/order-confirmation" element={<OrderConfirmation />} />
+            <Route path="/payment/card" element={<CardPayment />} />
+            <Route path="/payment/upi" element={<UPIPayment />} />
+            <Route path="/payment/netbanking" element={<NetBankingPayment />} />
+            <Route path="/payment/cod" element={<CashOnDelivery />} />
+            <Route
+              path="/payment/:appointmentId"
+              element={<PaymentGateway />}
+            />
+            <Route path="/payment/stripe" element={<StripePaymentForm />} />
+            <Route path="/payment/razorpay" element={<RazorpayPaymentForm />} />
+            <Route path="/payment/success" element={<PaymentSuccess />} />
           </Routes>
         </div>
         <Footer />

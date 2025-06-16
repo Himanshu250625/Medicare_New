@@ -237,30 +237,37 @@ const MedicineStore = () => {
 
         {/* Enhanced Carousel */}
         <div
-          className="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-lg mb-8 h-64 group mt-8 md:mt-12"
+          className="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-lg mb-8 min-h-[200px] md:min-h-[300px] group mt-8 md:mt-12 bg-gray-50"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
+          {/* Carousel Images with Enhanced Transitions */}
           {carouselImages.map((src, idx) => (
-            <img
+            <div
               key={idx}
-              src={src}
-              alt={`Banner ${idx + 1}`}
-              className={`absolute top-0 left-0 w-full h-64 object-cover transition-all duration-700 ease-in-out transform ${
+              className={`absolute inset-0 w-full h-full flex items-center justify-center transition-all duration-700 ease-in-out transform ${
                 current === idx
                   ? "opacity-100 translate-x-0 z-10"
+                  : idx < current
+                  ? "opacity-0 -translate-x-full z-0"
                   : "opacity-0 translate-x-full z-0"
               }`}
-            />
+            >
+              <img
+                src={src}
+                alt={`Banner ${idx + 1}`}
+                className="w-full h-full object-contain transition-all duration-700 ease-in-out transform hover:scale-105"
+              />
+            </div>
           ))}
 
-          {/* Navigation Arrows */}
+          {/* Enhanced Navigation Arrows with Hover Effects */}
           <button
             onClick={handlePrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:shadow-xl backdrop-blur-sm"
             aria-label="Previous slide"
           >
             <svg
@@ -279,7 +286,7 @@ const MedicineStore = () => {
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:shadow-xl backdrop-blur-sm"
             aria-label="Next slide"
           >
             <svg
@@ -297,19 +304,37 @@ const MedicineStore = () => {
             </svg>
           </button>
 
-          {/* Enhanced Dots */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+          {/* Enhanced Progress Bar */}
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-200/50 z-20">
+            <div
+              className="h-full bg-blue-500 transition-all duration-300 ease-linear"
+              style={{
+                width: `${((current + 1) / carouselImages.length) * 100}%`,
+                transition: isAutoPlaying ? "width 3.5s linear" : "none",
+              }}
+            />
+          </div>
+
+          {/* Enhanced Dots with Labels */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4 z-20">
             {carouselImages.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrent(idx)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  current === idx
-                    ? "bg-white scale-125"
-                    : "bg-white/50 hover:bg-white/80"
-                }`}
+                className="group flex flex-col items-center"
                 aria-label={`Go to slide ${idx + 1}`}
-              />
+              >
+                <div
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    current === idx
+                      ? "bg-white scale-125"
+                      : "bg-white/50 hover:bg-white/80"
+                  }`}
+                />
+                <span className="text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">
+                  {idx + 1}
+                </span>
+              </button>
             ))}
           </div>
         </div>
@@ -329,16 +354,19 @@ const MedicineStore = () => {
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap
+                    className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap
                       ${
                         selectedCategory === category
-                          ? "bg-blue-50 text-blue-600 shadow-sm"
-                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-800"
+                          ? "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white shadow-lg shadow-blue-200/50"
+                          : "bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700"
                       }
-                      border border-transparent hover:border-gray-200
-                      focus:outline-none focus:ring-2 focus:ring-blue-100`}
+                      border border-transparent
+                      focus:outline-none focus:ring-2 focus:ring-blue-100
+                      transform hover:scale-105 active:scale-95`}
                   >
-                    <span className="text-sm font-medium">{category}</span>
+                    <span className="relative z-10 text-sm font-medium">
+                      {category}
+                    </span>
                   </button>
                 ))}
               </div>

@@ -7,38 +7,52 @@ import {
   FaArrowLeft,
   FaMobileAlt,
 } from "react-icons/fa";
+import { useCart } from "../context/CartContext";
 
 const paymentMethods = [
   {
     id: "card",
     label: "Credit/Debit Card",
     icon: <FaCreditCard className="text-xl" />,
+    path: "/payment/card",
   },
   {
     id: "upi",
     label: "UPI",
     icon: <FaMobileAlt className="text-xl" />,
+    path: "/payment/upi",
   },
   {
     id: "netbanking",
     label: "Net Banking",
     icon: <FaUniversity className="text-xl" />,
+    path: "/payment/netbanking",
   },
   {
     id: "cod",
     label: "Cash on Delivery",
     icon: <FaMoneyBillWave className="text-xl" />,
+    path: "/payment/cod",
   },
 ];
 
 const PaymentOptions = () => {
   const [selected, setSelected] = useState("");
   const navigate = useNavigate();
-  const orderTotal = 1234; // Example, replace with real total if available
+  const { getCartTotal } = useCart();
+
+  // Calculate total with tax
+  const subtotal = getCartTotal();
+  const tax = Math.round(subtotal * 0.18);
+  const total = subtotal + tax;
 
   const handleProceed = () => {
-    // Redirect to payment processing or confirmation page
-    navigate("/order-confirmation", { state: { paymentMethod: selected } });
+    const selectedMethod = paymentMethods.find(
+      (method) => method.id === selected
+    );
+    if (selectedMethod) {
+      navigate(selectedMethod.path);
+    }
   };
 
   return (
@@ -55,9 +69,23 @@ const PaymentOptions = () => {
         </h1>
 
         {/* Order Summary */}
-        <div className="mb-8 p-4 bg-blue-50 rounded-lg flex justify-between items-center">
-          <span className="font-medium text-gray-700">Order Total:</span>
-          <span className="text-xl font-bold text-blue-700">₹{orderTotal}</span>
+        <div className="mb-8 p-4 bg-blue-50 rounded-lg">
+          <div className="space-y-2">
+            <div className="flex justify-between text-gray-600">
+              <span>Subtotal</span>
+              <span>₹{subtotal}</span>
+            </div>
+            <div className="flex justify-between text-gray-600">
+              <span>Tax (18%)</span>
+              <span>₹{tax}</span>
+            </div>
+            <div className="border-t pt-2 mt-2">
+              <div className="flex justify-between font-bold text-gray-900">
+                <span>Total</span>
+                <span>₹{total}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Payment Methods */}
