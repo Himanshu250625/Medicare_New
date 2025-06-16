@@ -91,6 +91,41 @@ npm run dev
 - Admin dashboard for system management
 - Responsive design for all interfaces
 
+## Screenshots
+
+### Frontend
+![Homepage](screenshots/homepage.png)
+*Main landing page of the application*
+
+![Login Page](screenshots/login.png)
+*User authentication page*
+
+![Dashboard](screenshots/dashboard.png)
+*User dashboard with key features*
+
+![Appointment Booking](screenshots/appointment-booking.png)
+*Easy-to-use appointment scheduling interface with calendar view*
+
+### Admin Panel
+![Admin Dashboard](screenshots/admin-dashboard.png)
+*Administrative control panel*
+
+![User Management](screenshots/user-management.png)
+*User management interface*
+
+### MediStore
+![MediStore Home](screenshots/medistore-home.png)
+*MediStore main page with featured products*
+
+![Product Categories](screenshots/medistore-categories.png)
+*Browse products by categories*
+
+![Product Details](screenshots/medistore-product.png)
+*Detailed view of medical products*
+
+![Shopping Cart](screenshots/medistore-cart.png)
+*Shopping cart and checkout interface*
+
 ## Contributing
 
 1. Fork the repository
