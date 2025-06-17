@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import validator from "validator";
 import userModel from "../models/userModel.js";
-import Doctor from "../models/Doctor.js";
+import doctorModel from "../models/doctorModel.js";
 import appointmentModel from "../models/appointmentModel.js";
 import { v2 as cloudinary } from 'cloudinary';
 
@@ -108,7 +108,7 @@ const updateProfile = async (req, res) => {
 const bookAppointment = async (req, res) => {
     try {
         const { userId, docId, slotDate, slotTime } = req.body;
-        const docData = await Doctor.findById(docId).select("-password");
+        const docData = await doctorModel.findById(docId).select("-password");
 
         if (!docData.available) {
             return res.json({ success: false, message: 'Doctor Not Available' });
@@ -138,7 +138,7 @@ const bookAppointment = async (req, res) => {
         });
 
         await appointment.save();
-        await Doctor.findByIdAndUpdate(docId, { slots_booked: bookedSlots });
+        await doctorModel.findByIdAndUpdate(docId, { slots_booked: bookedSlots });
 
         res.json({ success: true, message: 'Appointment booked successfully' });
     } catch (err) {
@@ -159,14 +159,14 @@ const cancelAppointment = async (req, res) => {
 
         await appointmentModel.findByIdAndUpdate(appointmentId, { cancelled: true });
 
-        const doctor = await Doctor.findById(appointment.docId);
+        const doctor = await doctorModel.findById(appointment.docId);
         let slots = doctor.slots_booked || {};
 
         if (slots[appointment.slotDate]) {
             slots[appointment.slotDate] = slots[appointment.slotDate].filter(time => time !== appointment.slotTime);
         }
 
-        await Doctor.findByIdAndUpdate(appointment.docId, { slots_booked: slots });
+        await doctorModel.findByIdAndUpdate(appointment.docId, { slots_booked: slots });
 
         res.json({ success: true, message: 'Appointment cancelled successfully' });
     } catch (err) {
